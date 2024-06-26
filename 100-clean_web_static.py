@@ -3,15 +3,17 @@
 import os
 from fabric.api import *
 
-env.hosts = ["34.229.161.57", "54.237.58.137"]
+env.hosts = ["104.196.168.90", "35.196.46.172"]
 
 
 def do_clean(number=0):
-    """Deletes outdated archives.
+    """Delete out-of-date archives.
+
     Args:
-        number (int):  number of archives to keep.
-    if number is 1 or 0, keeps the most recent archive. If
-    number is 2, keeps the two recent archives,
+        number (int): The number of archives to keep.
+
+    If number is 0 or 1, keeps only the most recent archive. If
+    number is 2, keeps the most and second-most recent archives,
     etc.
     """
     number = 1 if int(number) == 0 else int(number)

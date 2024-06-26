@@ -1,22 +1,16 @@
 #!/usr/bin/env bash
-# Script sets up a web server for deployment of web_static.
+# Sets up a web server for deployment of web_static.
 
 apt-get update
 apt-get install -y nginx
 
 mkdir -p /data/web_static/releases/test/
-ln -sf /data/web_static/releases/test/ /data/web_static/current
 mkdir -p /data/web_static/shared/
-echo "<html>
-  <head>
-  </head>
-  <body>
-    Holberton School
-  </body>
-</html>" > /data/web_static/releases/test/index.html
+echo "Holberton School" > /data/web_static/releases/test/index.html
+ln -sf /data/web_static/releases/test/ /data/web_static/current
 
-chgrp -R ubuntu /data/
 chown -R ubuntu /data/
+chgrp -R ubuntu /data/
 
 printf %s "server {
     listen 80 default_server;
@@ -31,7 +25,7 @@ printf %s "server {
     }
 
     location /redirect_me {
-        return 301 http://umohpyro.tech/;
+        return 301 http://cuberule.com/;
     }
 
     error_page 404 /404.html;
